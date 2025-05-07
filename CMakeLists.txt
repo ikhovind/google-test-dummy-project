@@ -16,6 +16,7 @@ include(cmake/variables.cmake)
 add_library(
     c_lib SHARED
     source/lib.c
+    source/mocked_lib.c
 )
 
 target_include_directories(
@@ -33,12 +34,6 @@ set_property(TARGET mocking_exe PROPERTY OUTPUT_NAME mocking)
 target_compile_features(mocking_exe PRIVATE c_std_99)
 
 target_link_libraries(mocking_exe PRIVATE c_lib)
-
-# ---- Install rules ----
-
-if(NOT CMAKE_SKIP_INSTALL_RULES)
-  include(cmake/install-rules.cmake)
-endif()
 
 # ---- Developer mode ----
 
